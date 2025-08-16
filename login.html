@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form_container">
+<h2>Login</h2>
+<div class="input_box">
+    <input type="email"  placeholder="" required>
+    <span>Username</span>
+</div>
+<div class="input_box">
+    <input type="password"  placeholder="" required>
+    <span>Password</span>
+</div>
+<button class="submit_btn">Login</button>
+    <p class="register_link">Don't have an account? <a  href="register.html">Register here</a></p>
+    </div>
+    <!-- // do proper login operation And redirect to dashboard -->
+    <script>
+        document.querySelector(".submit_btn").addEventListener("click", function() {
+            var email = document.querySelector('input[type="email"]').value;
+            var password = document.querySelector('input[type="password"]').value;
+
+            if (email && password) {
+                alert("Login successful!");
+                // redirect to home page or dashboard
+                window.location.href = "home.html"; // Change to your home page
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+</body>
+</html>

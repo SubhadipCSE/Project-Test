@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Portal Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-lg font-bold">Student Portal Dashboard</h1>
+    <nav>
+      <a href="index.html" class="px-3 hover:underline">Home</a>
+      <a href="login.html" class="px-3 hover:underline">Logout</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="p-6 grid lg:grid-cols-3 gap-6">
+
+    <!-- Overview Cards -->
+    <section class="lg:col-span-2 grid sm:grid-cols-3 gap-4">
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <h2 class="text-gray-500">Total Students</h2>
+        <p id="totalStudents" class="text-2xl font-bold">0</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <h2 class="text-gray-500">Pending Applications</h2>
+        <p class="text-2xl font-bold">5</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4 text-center">
+        <h2 class="text-gray-500">Exams Scheduled</h2>
+        <p class="text-2xl font-bold">3</p>
+      </div>
+    </section>
+
+    <!-- Student Registration Form -->
+    <section class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-lg font-bold mb-4">Register Student</h2>
+      <form id="studentForm" class="space-y-4">
+        <div>
+          <label class="block font-medium">Full Name</label>
+          <input type="text" id="name" class="w-full border border-gray-300 rounded p-2" required>
+        </div>
+        <div>
+          <label class="block font-medium">Email</label>
+          <input type="email" id="email" class="w-full border border-gray-300 rounded p-2" required>
+        </div>
+        <div>
+          <label class="block font-medium">Course</label>
+          <input type="text" id="course" class="w-full border border-gray-300 rounded p-2" required>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Register</button>
+      </form>
+    </section>
+
+    <!-- Student List -->
+    <section class="lg:col-span-3 bg-white rounded-lg shadow p-6">
+      <h2 class="text-lg font-bold mb-4">Registered Students</h2>
+      <table class="w-full border border-gray-300 text-left">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-2 border">Name</th>
+            <th class="p-2 border">Email</th>
+            <th class="p-2 border">Course</th>
+          </tr>
+        </thead>
+        <tbody id="studentList">
+          <tr>
+            <td colspan="3" class="text-center p-4 text-gray-500">No students registered yet</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- Script -->
+  <script>
+    const studentForm = document.getElementById("studentForm");
+    const studentList = document.getElementById("studentList");
+    const totalStudents = document.getElementById("totalStudents");
+
+    let students = [];
+
+    studentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const course = document.getElementById("course").value.trim();
+
+      students.push({ name, email, course });
+      updateStudentTable();
+
+      studentForm.reset();
+    });
+
+    function updateStudentTable() {
+      studentList.innerHTML = "";
+      students.forEach((student) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="p-2 border">${student.name}</td>
+          <td class="p-2 border">${student.email}</td>
+          <td class="p-2 border">${student.course}</td>
+        `;
+        studentList.appendChild(row);
+      });
+
+      totalStudents.textContent = students.length;
+    }
+  </script>
+
+</body>
+</html>

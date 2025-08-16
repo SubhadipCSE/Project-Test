@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form_container">
+        <h2>Register</h2>
+        <div class="input_box">
+            <input type="text" placeholder="" required>
+            <span>Name</span>
+        </div>
+        <div class="input_box">
+            <input type="email" placeholder="" required>
+            <span>Email</span>
+        </div>
+        <div class="input_box">
+            <input type="password" placeholder="" required>
+            <span>Password</span>
+        </div>
+        <button class="submit_btn">Register</button>
+        <p class="register_link">Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+    <script>
+      // add a check
+        document.querySelector(".submit_btn").addEventListener("click", function() {
+            var name = document.querySelector('input[type="text"]').value;
+            var email = document.querySelector('input[type="email"]').value;
+            var password = document.querySelector('input[type="password"]').value;
+
+            if (name && email && password) {
+                alert("Registration successful!");
+                // redirect to login page
+                window.location.href = "login.html";
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 text-center">Student Registration Dashboard</h1>
+
+    <!-- Form -->
+    <form id="studentForm" class="bg-white p-6 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <input type="text" id="name" placeholder="Name" class="border p-2 rounded" required>
+      <input type="email" id="email" placeholder="Email" class="border p-2 rounded" required>
+      <input type="text" id="roll" placeholder="University Roll" class="border p-2 rounded" required>
+
+      <!-- Course Dropdown -->
+      <select id="course" class="border p-2 rounded" required>
+        <option value="">Select Course</option>
+        <option value="CSE">Computer Science Engineering</option>
+        <option value="ECE">Electronics and Communication Engineering</option>
+        <option value="EEE">Electrical and Electronics Engineering</option>
+        <option value="ME">Mechanical Engineering</option>
+        <option value="CE">Civil Engineering</option>
+      </select>
+
+      <input type="number" id="marks" placeholder="Marks (100)" class="border p-2 rounded" required>
+      <input type="number" id="age" placeholder="Age" class="border p-2 rounded" required>
+      <input type="text" id="ph" placeholder="Phone" class="border p-2 rounded" required>
+
+      <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 md:col-span-2">Add Student</button>
+    </form>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white rounded-lg shadow-md">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="p-2">Name</th>
+            <th class="p-2">Email</th>
+            <th class="p-2">University Roll</th>
+            <th class="p-2">Course</th>
+            <th class="p-2">Marks (100)</th>
+            <th class="p-2">Age</th>
+            <th class="p-2">Ph</th>
+            <th class="p-2">Action</th>
+          </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let students = [];
+    let editIndex = -1;
+
+    const form = document.getElementById('studentForm');
+    const tableBody = document.getElementById('studentTable');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const student = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        roll: document.getElementById('roll').value,
+        course: document.getElementById('course').value,
+        marks: document.getElementById('marks').value,
+        age: document.getElementById('age').value,
+        ph: document.getElementById('ph').value
+      };
+
+      if (editIndex === -1) {
+        students.push(student);
+      } else {
+        students[editIndex] = student;
+        editIndex = -1;
+      }
+
+      form.reset();
+      renderTable();
+    });
+
+    function renderTable() {
+      tableBody.innerHTML = '';
+      students.forEach((student, index) => {
+        const row = `
+          <tr class="border-b">
+            <td class="p-2">${student.name}</td>
+            <td class="p-2">${student.email}</td>
+            <td class="p-2">${student.roll}</td>
+            <td class="p-2">${student.course}</td>
+            <td class="p-2">${student.marks}</td>
+            <td class="p-2">${student.age}</td>
+            <td class="p-2">${student.ph}</td>
+            <td class="p-2 space-x-2">
+              <button onclick="editStudent(${index})" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</button>
+              <button onclick="deleteStudent(${index})" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+            </td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    function deleteStudent(index) {
+      students.splice(index, 1);
+      renderTable();
+    }
+
+    function editStudent(index) {
+      const student = students[index];
+      document.getElementById('name').value = student.name;
+      document.getElementById('email').value = student.email;
+      document.getElementById('roll').value = student.roll;
+      document.getElementById('course').value = student.course;
+      document.getElementById('marks').value = student.marks;
+      document.getElementById('age').value = student.age;
+      document.getElementById('ph').value = student.ph;
+
+      editIndex = index;
+    }
+  </script>
+
+</body>
+</html>
