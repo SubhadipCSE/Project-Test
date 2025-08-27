@@ -24,19 +24,67 @@
       </button>
 
       <!-- Nav Links -->
-     <ul id="menu" class="hidden md:flex gap-6 items-center flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent p-4 md:p-0 z-50">
-        <li><a href="index2.html" class="hover:underline">HOME</a></li>
-        <li><a href="#" class="hover:underline">THE COLLEGE</a></li>
-        <li><a href="#" class="hover:underline">DEPARTMENT</a></li>
-        <li><a href="#" class="hover:underline">ADMISSION</a></li>
-        <li><a href="about.html" class="hover:underline">ABOUT</a></li>
-        <li><a href="t" class="hover:underline">TEACHERS PANEL</a></li>
-        <li><a href="index.html" class="hover:underline">STUDENTS ZONE</a></li>
-        <div class="flex gap-2 mt-2 md:mt-0">
-          <a href="login.html" class="bg-white text-blue-600 px-4 py-1 rounded hover:bg-gray-200">Log In</a>
-          <a href="register.html" class="bg-yellow-400 px-4 py-1 rounded hover:bg-yellow-500">Sign Up</a>
-        </div>
-      </ul>
+     <nav class="bg-blue-600 text-white px-6 py-3 flex justify-between items-center relative">
+    <!-- Logo -->
+    <h1 class="text-xl font-bold">College Website</h1>
+
+    <!-- Hamburger Button (Mobile Only) -->
+    <button id="menu-btn" class="md:hidden focus:outline-none">
+      <!-- Open Icon -->
+      <svg id="open-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <!-- Close Icon -->
+      <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Menu -->
+    <ul id="menu" class="hidden md:flex gap-6 items-center flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent p-4 md:p-0 z-50">
+      <li><a href="index.html" class="hover:underline block py-2 md:py-0">HOME</a></li>
+      <li><a href="#" class="hover:underline block py-2 md:py-0">THE COLLEGE</a></li>
+      
+      <!-- Dropdown: Department -->
+      <li class="relative group md:static">
+        <button class="hover:underline flex items-center py-2 md:py-0 w-full justify-between md:w-auto" onclick="toggleDropdown('deptDropdown')">
+          DEPARTMENT
+          <span class="md:hidden">▼</span>
+        </button>
+        <ul id="deptDropdown" class="hidden md:absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition md:duration-200">
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">Computer Science</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">Electronics</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">Mechanical</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">Civil</a></li>
+        </ul>
+      </li>
+
+      <!-- Dropdown: Admission -->
+      <li class="relative group md:static">
+        <button class="hover:underline flex items-center py-2 md:py-0 w-full justify-between md:w-auto" onclick="toggleDropdown('admDropdown')">
+          ADMISSION
+          <span class="md:hidden">▼</span>
+        </button>
+        <ul id="admDropdown" class="hidden md:absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded shadow-lg md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition md:duration-200">
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">Undergraduate</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">Postgraduate</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-blue-100">PhD</a></li>
+        </ul>
+      </li>
+
+      <li><a href="about.html" class="hover:underline block py-2 md:py-0">ABOUT</a></li>
+      <li><a href="teacher_landing_page.html" class="hover:underline block py-2 md:py-0">TEACHERS PANEL</a></li>
+      <li><a href="student_panel.html" class="hover:underline block py-2 md:py-0">STUDENTS ZONE</a></li>
+
+      <!-- Auth Buttons -->
+      <div class="flex gap-2 mt-2 md:mt-0">
+        <a href="login.html" class="bg-white text-blue-600 px-4 py-1 rounded hover:bg-gray-200">Log In</a>
+        <a href="register.html" class="bg-yellow-400 px-4 py-1 rounded hover:bg-yellow-500">Sign Up</a>
+      </div>
+    </ul>
+  </nav>
     </nav>
   </header>
 
@@ -156,7 +204,7 @@
       <div class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition">
         <img src="image.png" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
         <h3 class="text-xl font-bold">Ranajit Mondal</h3>
-        <!-- <p class="text-pink-100"> Head Instructor</p> -->
+        <p class="text-pink-100"> Head Instructor</p>
       </div>
       <div class="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition">
         <img src="ID.jpeg" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
@@ -215,12 +263,12 @@
     <div>
       <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
       <ul class="space-y-2 text-sm">
-        <li><a href="index2.html" class="hover:text-yellow-300 transition">HOME</a></li>
+        <li><a href="index.html" class="hover:text-yellow-300 transition">HOME</a></li>
         <li><a href="#" class="hover:text-yellow-300 transition">DEPARTMENT</a></li>
         <li><a href="#" class="hover:text-yellow-300 transition">ADMISSION</a></li>
         <li><a href="about.html" class="hover:text-yellow-300 transition">ABOUT US</a></li>
         <li><a href="#" class="hover:text-yellow-300 transition">GALLERY</a></li>
-        <li><a href="index.html" class="hover:text-yellow-300 transition">STUDENTS ZONE</a></li>
+        <li><a href="student_panel.html" class="hover:text-yellow-300 transition">STUDENTS ZONE</a></li>
       </ul>
     </div>
 
@@ -275,27 +323,27 @@
   </div>
 </footer>
 <!-- dropdown menu part -->
-<div class="department_menu">
-  <button id="dropdown-btn" class="bg-blue-600 text-white px-4 py-2 rounded">
-    Departments
-  </button>
-  <ul id="dropdown" class="hidden bg-white shadow-md rounded mt-2">
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Department of Theology</a></li>
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Department of Philosophy</a></li>
-    <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Department of History</a></li>
-  </ul>
-</div>
+
 <script>
   // Alert for under construction
   alert("This WebSite Is under construction please use the arrow keys to navigate.");
 
   // Mobile menu toggle
   const menuBtn = document.getElementById('menu-btn');
-  const menu = document.getElementById('menu');
+    const menu = document.getElementById('menu');
+    const openIcon = document.getElementById('open-icon');
+    const closeIcon = document.getElementById('close-icon');
 
-  menuBtn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-  });
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle('hidden');
+    }
 </script>
 </body>
 </html>
