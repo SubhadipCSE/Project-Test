@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Dreams of Indian Theological Seminary</title>
+  <title>Student Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
+<body class="bg-gray-100">
   <!-- Navbar -->
-<header class="bg-blue-600 text-white">
+   <header class="bg-blue-600 text-white">
     <nav class="container mx-auto flex justify-between items-center p-4">
       <!-- Logo / Title -->
-      <h1 class="text-xl font-bold flex gap-4"> <img class="w-10 h-10 border-2 border-white rounded-full" src="logo.jpg" alt="Logo"> DITS</h1>
-
+      <h1 class="text-xl font-bold">STUDENT PANEL</h1>
+      
       <!-- Hamburger button (Mobile Only) -->
       <button id="menu-btn" class="block md:hidden focus:outline-none">
         <!-- three line icon -->
@@ -42,58 +41,34 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
-    <div class="max-w-5xl mx-auto text-center px-6">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to Dreams of Indian Theological Seminary</h1>
-      <p class="text-lg md:text-xl mb-8">Empowering students with knowledge, values, and innovation for a brighter future.</p>
-      <div class="space-x-4">
-        <a href="about.html" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold shadow hover:bg-gray-200 transition">Learn More</a>
-        <a href="contact.html" class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-full font-semibold shadow hover:bg-yellow-500 transition">Get in Touch</a>
+  <section class="text-center py-20 bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+    <h2 class="text-4xl font-bold">Welcome to the Student Portal</h2>
+    <p class="mt-4">Your one-stop solution for managing student data and academics.</p>
+    <div class="mt-6 flex justify-center gap-4">
+      <a href="login.html" class="bg-white text-blue-600 px-6 py-2 rounded shadow hover:bg-gray-200">Login</a>
+      <a href="register.html" class="bg-yellow-400 px-6 py-2 rounded shadow hover:bg-yellow-500">Register</a>
+    </div>
+  </section>
+  <!-- notice section -->
+  <section class="py-10">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <!-- Registered Students -->
+      <div class="bg-green-400 rounded-lg shadow p-6">
+      <h3 class="text-2xl font-bold text-blue-600 mb-2"></h3>
+      <p class="text-gray-700">Registered Students</p>
+      </div>
+      <!-- Ongoing Exams -->
+      <div class="bg-red-400 rounded-lg shadow p-6">
+      <h3 class="text-2xl font-bold text-purple-600 mb-2"></h3>
+      <p class="text-gray-700">Ongoing Exams</p>
+      </div>
+      <!-- Upcoming Exams -->
+      <div class="bg-blue-300 rounded-lg shadow p-6">
+      <h3 class="text-2xl font-bold text-yellow-500 mb-2"></h3>
+      <p class="text-gray-700">Upcoming Exams</p>
       </div>
     </div>
   </section>
-
-  <!-- Features Section -->
-  <section class="py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us?</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white shadow rounded-2xl p-6 text-center hover:shadow-lg transition">
-          <div class="text-blue-600 text-4xl mb-4">📘</div>
-          <h3 class="text-xl font-semibold mb-2">Quality Education</h3>
-          <p class="text-gray-600 text-sm">We provide world-class education combining academics, research, and spiritual growth.</p>
-        </div>
-        <div class="bg-white shadow rounded-2xl p-6 text-center hover:shadow-lg transition">
-          <div class="text-blue-600 text-4xl mb-4">🤝</div>
-          <h3 class="text-xl font-semibold mb-2">Community Values</h3>
-          <p class="text-gray-600 text-sm">Our community-driven approach builds strong bonds and lifelong values.</p>
-        </div>
-        <div class="bg-white shadow rounded-2xl p-6 text-center hover:shadow-lg transition">
-          <div class="text-blue-600 text-4xl mb-4">🌍</div>
-          <h3 class="text-xl font-semibold mb-2">Global Vision</h3>
-          <p class="text-gray-600 text-sm">We prepare students to become global leaders who make a difference.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Preview -->
-  <section class="bg-gray-100 py-16">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h2 class="text-3xl font-bold mb-4">About Our Seminary</h2>
-        <p class="text-gray-600 leading-relaxed mb-6">
-          At Dreams of Indian Theological Seminary, we are dedicated to nurturing students through innovative learning, 
-          holistic development, and a commitment to excellence. Discover our mission, vision, and journey.
-        </p>
-        <a href="about.html" class="bg-blue-600 text-white px-6 py-3 rounded-full shadow hover:bg-blue-700 transition">Read More</a>
-      </div>
-      <div>
-        <img src="Picture1.jpg" alt="Seminary" class="rounded-2xl shadow">
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white">
   <div class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-4 gap-10">
@@ -115,11 +90,12 @@
     <div>
       <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
       <ul class="space-y-2 text-sm">
-        <li><a href="index2.html" class="hover:text-yellow-300 transition">Home</a></li>
-        <li><a href="about.html" class="hover:text-yellow-300 transition">About Us</a></li>
-        <li><a href="#" class="hover:text-yellow-300 transition">Gallery</a></li>
-        <li><a href="index.html" class="hover:text-yellow-300 transition">Students Corner</a></li>
-        <li><a href="#" class="hover:text-yellow-300 transition">Alumni</a></li>
+        <li><a href="index2.html" class="hover:text-yellow-300 transition">HOME</a></li>
+        <li><a href="#" class="hover:text-yellow-300 transition">DEPARTMENT</a></li>
+        <li><a href="#" class="hover:text-yellow-300 transition">ADMISSION</a></li>
+        <li><a href="about.html" class="hover:text-yellow-300 transition">ABOUT US</a></li>
+        <li><a href="#" class="hover:text-yellow-300 transition">GALLERY</a></li>
+        <li><a href="#" class="hover:text-yellow-300 transition">STUDENTS ZONE</a></li>
       </ul>
     </div>
 
@@ -173,8 +149,15 @@
     © 2025 Dreams of Indian Theological Seminary. All Rights Reserved.
   </div>
 </footer>
-<script>
-  alert("This WebSite Is under construction please use the arrow keys to navigate.")
-</script>
+  <script>
+    alert("This WebSite Is under construction please use the arrow keys to navigate.")
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
