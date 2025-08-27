@@ -88,3 +88,47 @@ h2{
     color: #acc761;
     text-decoration: underline;
 }
+@media (max-width: 400px){
+    .form_container{
+        width: 90%;
+        padding: 30px;
+    }
+}
+.department_menu {
+    position: relative;
+    display: inline-block;
+}
+#dropdown-btn:focus + #dropdown,
+#dropdown:hover {
+    display: block;
+}
+.check_box {
+    margin: 10px 0;
+    color: gray;
+}
+.forgot_password{ color: #00ffff;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: none;
+}
+.forgot_password a{
+    color: #5b5cb6;
+    text-decoration: none;
+    transition: 0.3s;
+}.forgot_password a:hover{
+    color: #acc761;
+    text-decoration: underline;
+}
+.usertype {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 10px 0;
+    color: gray;
+}
+/* .usertype:hover {
+    color: #00ffff;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.5s;
+} */

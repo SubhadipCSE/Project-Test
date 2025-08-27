@@ -8,7 +8,17 @@
 </head>
 <body>
     <div class="form_container">
-        <h2>Register</h2>
+        <h2>Sign Up</h2>
+        <div class="usertype">
+    <label>
+        <input type="radio" class="check_box" name="userType" value="teacher" required>
+        Teacher
+    </label>
+    <label>
+        <input type="radio" class="check_box" name="userType" value="student" required>
+        Student
+    </label>
+</div>
         <div class="input_box">
             <input type="text" placeholder="" required>
             <span>Name</span>
@@ -21,10 +31,17 @@
             <input type="password" placeholder="" required>
             <span>Password</span>
         </div>
+        <div class="input_box">
+            <input type="password" placeholder="" required>
+            <span>Confirm Password</span>
+        </div>
+
         <button class="submit_btn">Register</button>
-        <p class="register_link">Already have an account? <a href="login.html">Login here</a></p>
+        <p class="register_link">Already have an account? <a href="login.html">Login Here</a></p>
     </div>
     <script>
+        // Alert for under construction
+        alert("This WebSite Is under construction please use the arrow keys to navigate.");
       // add a check
         document.querySelector(".submit_btn").addEventListener("click", function() {
             var name = document.querySelector('input[type="text"]').value;

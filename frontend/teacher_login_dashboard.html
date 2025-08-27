@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard - Notes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navbar -->
+  <header class="bg-blue-700 text-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">📘 Teacher Dashboard</h1>
+    <div>
+        <button  class="bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition"><a href="teacher_landing_page.html">Home</a></button>
+      <button onclick="logout()" class="bg-red-500 px-4 py-2 rounded hover:bg-red-600 transition">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-6">
+
+    <!-- Teacher Info -->
+    <!-- Teacher Info -->
+<section class="bg-white shadow-lg rounded-2xl p-6 mb-8 flex items-center justify-between">
+  <div>
+    <h2 class="text-2xl font-bold text-blue-700">👩‍🏫 Welcome, <span id="teacherName">Teacher</span></h2>
+    <p class="text-gray-600">Subject: <span id="teacherSubject">---</span></p>
+    <p class="text-gray-600">Email: <span id="teacherEmail">---</span></p>
+  </div>
+
+  <!-- Profile Picture -->
+<div class="relative cursor-pointer">
+  <img id="profilePic" 
+       src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+       class="w-24 h-24 rounded-full shadow-md border-4 border-blue-300 hover:opacity-80 transition" 
+       alt="Teacher Avatar"
+       onclick="document.getElementById('profilePicInput').click();">
+  <input type="file" id="profilePicInput" accept="image/*" class="hidden">
+</div>
+
+</section>
+
+    <!-- Upload Notes Section -->
+    <section class="bg-white shadow-lg rounded-2xl p-6 mb-10">
+      <h3 class="text-2xl font-bold mb-4">📤 Upload Notes (Multiple Files)</h3>
+      <form id="uploadForm" class="flex items-center space-x-4">
+        <input type="file" id="fileInput" class="border p-2 rounded w-full" multiple required>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Upload</button>
+      </form>
+      <p id="uploadMsg" class="text-green-600 mt-3"></p>
+    </section>
+
+    <!-- Notes List -->
+    <section class="bg-white shadow-lg rounded-2xl p-6">
+      <h3 class="text-2xl font-bold mb-4">📚 My Notes</h3>
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border p-2">File Name</th>
+            <th class="border p-2">Uploaded On</th>
+            <th class="border p-2">Action</th>
+          </tr>
+        </thead>
+        <tbody id="notesTable">
+          <!-- Uploaded notes will appear here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-6 mt-12 text-center">
+    <p>© 2025 Teacher Panel | Designed with ❤️ using TailwindCSS</p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Alert for under construction
+    alert("This WebSite Is under construction please use the arrow keys to navigate.");
+    const notesTable = document.getElementById("notesTable");
+    const uploadForm = document.getElementById("uploadForm");
+    const uploadMsg = document.getElementById("uploadMsg");
+
+    // Dummy teacher data
+    const teacher = {
+    name: "Subhadip Samanta",
+    subject: "Computer Science",
+    email: "teacher@example.com"
+  };
+  document.getElementById("teacherName").innerText = teacher.name;
+  document.getElementById("teacherSubject").innerText = teacher.subject;
+  document.getElementById("teacherEmail").innerText = teacher.email;
+
+  // Profile picture change
+  const profilePicInput = document.getElementById("profilePicInput");
+  const profilePic = document.getElementById("profilePic");
+
+  profilePicInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          EXIF.getData(img, function() {
+            const orientation = EXIF.getTag(this, "Orientation");
+
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d");
+            let width = img.width;
+            let height = img.height;
+
+            if ([5,6,7,8].includes(orientation)) {
+              canvas.width = height;
+              canvas.height = width;
+            } else {
+              canvas.width = width;
+              canvas.height = height;
+            }
+
+            switch (orientation) {
+              case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;        // Flip horizontal
+              case 3: ctx.transform(-1, 0, 0, -1, width, height); break;  // Rotate 180
+              case 4: ctx.transform(1, 0, 0, -1, 0, height); break;       // Flip vertical
+              case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;             // Rotate 90 CW + Flip
+              case 6: ctx.transform(0, 1, -1, 0, height, 0); break;       // Rotate 90 CW
+              case 7: ctx.transform(0, -1, -1, 0, height, width); break;  // Rotate 90 CCW + Flip
+              case 8: ctx.transform(0, -1, 1, 0, 0, width); break;        // Rotate 90 CCW
+              default: break;
+            }
+
+            ctx.drawImage(img, 0, 0, width, height);
+            profilePic.src = canvas.toDataURL("image/jpeg");
+          });
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  // Handle multiple file upload
+  uploadForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const files = document.getElementById("fileInput").files;
+    if (files.length === 0) return;
+
+      Array.from(files).forEach(file => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="border p-2">${file.name}</td>
+          <td class="border p-2">${new Date().toLocaleString()}</td>
+          <td class="border p-2 text-center">
+            <button onclick="viewFile('${file.name}')" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">View</button>
+            <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition" onclick="this.closest('tr').remove()">Delete</button>
+          </td>
+        `;
+        notesTable.appendChild(row);
+      });
+
+      uploadMsg.innerText = `✅ ${files.length} note(s) uploaded successfully!`;
+      uploadForm.reset();
+    });
+
+    // View button simulation
+    function viewFile(fileName) {
+      alert("📂 Opening note: " + fileName);
+    }
+
+    // Profile picture update
+    function updateProfilePic(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById("profilePic").src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("token");
+      window.location.href = "teacher-login.html";
+    }
+    
+  </script>
+</body>
+</html>
+

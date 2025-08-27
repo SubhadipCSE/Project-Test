@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form_container">
+        <h2>Teacher Login</h2>
+        <div class="input_box">
+            <input type="email" id="teacher-email" placeholder="" required>
+            <span>Username</span>
+        </div>
+        <div class="input_box">
+            <input type="password" id="teacher-password" placeholder="" required>
+            <span>Password</span>
+        </div>
+        <button class="submit_btn">Login</button>
+        <p class="register_link">Forget Password? <a href="forget_password.html">Click Here</a></p>
+        <p class="register_link">Don't have an account? <a href="register.html">Register Here</a></p>
+    </div>
+    <script>
+        // Alert for under construction
+        alert("This WebSite Is under construction please use the arrow keys to navigate.");
+        document.querySelector(".submit_btn").addEventListener("click", function() {
+            var email = document.getElementById('teacher-email').value;
+            var password = document.getElementById('teacher-password').value;
+
+            if (email && password) {
+                // Here you would typically send a request to your backend for authentication
+                alert("Login successful!");
+                window.location.href = "teacher-dashboard.html"; // Redirect to teacher dashboard
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    </script>
+</body>
+</html>
